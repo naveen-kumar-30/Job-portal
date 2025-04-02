@@ -7,7 +7,7 @@ import Jobpage, { jobLoader } from './pages/Jobpage';
 import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
-const API_BASE_URL = "https://job-portals-dguh.onrender.com/jobs";
+const API_BASE_URL = "https://job-portals-dguh.onrender.com";
 
 const App = () => {
   // Add New Job
@@ -39,7 +39,7 @@ const App = () => {
   // Update Job
   const updateJob = async (job) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/${job.id}`, {
+      const res = await fetch(`${API_BASE_URL}/${jobs.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(job),
