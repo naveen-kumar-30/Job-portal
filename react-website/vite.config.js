@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: process.env.NODE_ENV === 'production' ? 'https://job-portals-dguh.onrender.com' : 'http://localhost:8000',
+        target:'https://job-portals-dguh.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
