@@ -7,7 +7,7 @@ import Jobpage, { jobLoader } from './pages/Jobpage';
 import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
-const API_BASE_URL = "https://job-portals-dguh.onrender.com"; // ✅ Use your deployed backend URL
+const API_BASE_URL = "https://job-portals-dguh.onrender.com/jobs"; // ✅ Use your deployed backend URL
 
 const App = () => {
   // Add New Job
