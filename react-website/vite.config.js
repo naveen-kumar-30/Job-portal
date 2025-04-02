@@ -7,12 +7,11 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      '/api': {
-        target: 'https://job-portals-dguh.onrender.com', // Render backend
-        changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/api/, ''), // Removes "/api" prefix
+      '/api' : {
+        target: 'http://localhost:8000',
+        changeOrigin : true,
+        rewrite: (path) => path.replace(/^\/api/,''),
       },
-    },
-  },
-});
+    }
+  }
+})
