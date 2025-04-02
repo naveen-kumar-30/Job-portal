@@ -7,40 +7,48 @@ import Jobpage, { jobLoader } from './pages/Jobpage';
 import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
-const API_BASE_URL = "https://job-portals-dguh.onrender.com/jobs"; // ✅ Use your deployed backend URL
+const API_BASE_URL = "https://job-portals-dguh.onrender.com/jobs";
 
 const App = () => {
   // Add New Job
   const addJob = async (newJob) => {
-    console.log(newJob);
-    const res = await fetch(`${API_BASE_URL}`, {  // ✅ Correct API URL
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newJob),
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE_URL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newJob),
+      });
+      if (!res.ok) throw new Error("Failed to add job");
+      return res.json();
+    } catch (error) {
+      console.error("Error adding job:", error);
+    }
   };
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`${API_BASE_URL}/${id}`, {  // ✅ Correct API URL
-      method: "DELETE",
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE_URL}/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete job");
+      return res.json();
+    } catch (error) {
+      console.error("Error deleting job:", error);
+    }
   };
 
   // Update Job
   const updateJob = async (job) => {
-    const res = await fetch(`${API_BASE_URL}/${job.id}`, {  // ✅ Correct API URL
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(job),
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE_URL}/${job.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(job),
+      });
+      if (!res.ok) throw new Error("Failed to update job");
+      return res.json();
+    } catch (error) {
+      console.error("Error updating job:", error);
+    }
   };
 
   const router = createBrowserRouter(
